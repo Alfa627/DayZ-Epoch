@@ -118,6 +118,18 @@ if ((_ownerID == dayz_combination) or (_ownerID == dayz_playerUID)) then {
 		cutText [format[(localize "str_player_beinglooted"),_text] , "PLAIN DOWN"];
 	};
 } else {
+	if (isNil 'KeyCodeTry') then {KeyCodeTry = true;};
+	[] spawn {sleep 10;KeyCodeTry = nil;};
+	[] spawn {
+		while {KeyCodeTry} do
+		{
+			disableSerialization;
+			_display = findDisplay 133337;
+			_display closeDisplay 3000;
+			sleep 0.1;
+		};
+	};
+
 	player playActionNow "Medic";
 	sleep 1;
 	[player,"repair",0,false] call dayz_zombieSpeak;
