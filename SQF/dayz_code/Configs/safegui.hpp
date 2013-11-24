@@ -98,7 +98,7 @@
 
 class SafeKeyPad
 {
-	idd = -1;
+	idd = 133337;
 	movingenable = 0;
 
 	class Controls
